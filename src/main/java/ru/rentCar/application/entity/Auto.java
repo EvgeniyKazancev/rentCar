@@ -1,4 +1,4 @@
-package ru.rentTaxi.application.entity;
+package ru.rentCar.application.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -14,27 +14,27 @@ public class Auto {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column
+    @Column(name = "NUMBER_PTS")
     private BigDecimal numberPTS;
 
-    @Column
+    @Column(name = "MAKE")
     private String make;
 
-    @Column
+    @Column(name = "MODEL")
     private String model;
 
-    @Column
+    @Column(name = "YEAR")
     private int year;
 
-    @Column
+    @Column(name = "COLOR")
     private String color;
 
-    @Column
+    @Column(name = "RENTEL_PRICE_PER_DAY")
     private double rentalPricePerDay;
 
-    @Column
+    @Column(name = "MILEAGE")
     private Long mileage;
 
-    @Column
+    @Column(name = "RENTED")
     private boolean rented;
 }

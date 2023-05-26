@@ -1,4 +1,4 @@
-package ru.rentTaxi.application.entity;
+package ru.rentCar.application.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

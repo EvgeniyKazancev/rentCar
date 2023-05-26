@@ -1,7 +1,7 @@
-package ru.rentTaxi.application.repository;
+package ru.rentCar.application.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.rentTaxi.application.entity.Auto;
+import ru.rentCar.application.entity.Auto;
 
 public interface AutoRepository extends JpaRepository<Auto,Long> {
 

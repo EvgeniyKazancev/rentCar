@@ -1,4 +1,4 @@
-package ru.rentTaxi.application.dto;
+package ru.rentCar.application.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
