@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @XmlRootElement(name = "auto")
@@ -25,7 +26,7 @@ public class GetXmlAuto {
 
     @NotBlank(message = "Number of PTS is mandatory")
     @XmlElement(name = "numberPts")
-    private Long numberPts;
+    private BigDecimal numberPts;
 
     @NotBlank(message = "Make is mandatory")
     @XmlElement(name = "make")
