@@ -36,7 +36,7 @@ public class GetXmlAuto {
     private String model;
 
     @Min(value = 2010, message = "Year should not be less than 2010")
-    @Max(value = 2050,message = "Year should be not greater than 2050")
+    @Max(value = 2050, message = "Year should be not greater than 2050")
     @XmlElement(name = "year")
     private int year;
 
@@ -47,6 +47,10 @@ public class GetXmlAuto {
     @NotNull(message = "Rental price in day is mandatory")
     @XmlElement(name = "rentalPricePerDay")
     private double rentalPricePerDay;
+
+    @NotBlank(message = "Mileage is mandatory")
+    @XmlElement
+    private Long mileage;
 
     @XmlElement(name = "rented")
     private boolean rented;
