@@ -10,9 +10,12 @@ import java.util.UUID;
 @Entity
 @Table(name = "DRIVER")
 public class Driver  {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID Id;
+    @ManyToOne
+    private Car car;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
