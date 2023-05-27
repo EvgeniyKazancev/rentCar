@@ -20,7 +20,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-public class GetXmlAuto {
+public class GetXmlCar {
     @XmlElement(name = "ID")
     private UUID id;
 

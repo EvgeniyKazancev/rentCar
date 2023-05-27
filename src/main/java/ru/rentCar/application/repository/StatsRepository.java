@@ -22,7 +22,7 @@ public class StatsRepository {
     public int getSpendFromIsDate(Date date) {
         Map<String, Object> parametrs = new HashMap<>();
         parametrs.put("date", date);
-        return namedParameterJdbcTemplate.queryForObject("SELECT Spend from SPENDS WHERE DATE > :date", parametrs, new StatsRowMapper());
+        return namedParameterJdbcTemplate.queryForObject("SELECT Spend from SPEND WHERE DATE > :date", parametrs, new StatsRowMapper());
     }
 //    public int getAllSpend(BigDecimal amount){
 //        Map<String,Object> parametrs = new HashMap<>();

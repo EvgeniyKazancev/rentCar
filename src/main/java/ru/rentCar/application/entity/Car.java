@@ -7,12 +7,14 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "AUTO")
+@Table(name = "CAR")
 @Data
-public class Auto {
+public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @ManyToOne
+    private Driver driver;
 
     @Column(name = "NUMBER_PTS")
     private BigDecimal numberPTS;
