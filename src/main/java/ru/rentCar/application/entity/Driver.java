@@ -32,4 +32,5 @@ public class Driver  {
     @Column(name = "LICENSE_NUMBER")
     private String licenseNumber;
 
+
 }

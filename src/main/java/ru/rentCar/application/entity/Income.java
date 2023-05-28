@@ -12,7 +12,8 @@ public class Income {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @OneToMany
+    private Car car;
 
     @Column(name = "PRICE")
     private int price;

@@ -2,11 +2,16 @@ package ru.rentCar.application.controlers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.rentCar.application.dto.GetXmlCar;
 import ru.rentCar.application.entity.Car;
 import ru.rentCar.application.repository.CarRepository;
 import ru.rentCar.application.service.CarService;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +44,11 @@ public class CarControllers {
     public Car addCar(@RequestBody Car car) {
         return carRepository.save(car);
     }
+    @DeleteMapping("/delete/{id}")
+    public void deleteCar(@PathVariable UUID id){
+        carRepository.delete(id);
+
+    }
 
     @PutMapping("/upCar")
     public Car updateCar(@PathVariable UUID id, @RequestBody Car updateCar) {
@@ -49,6 +59,14 @@ public class CarControllers {
 
         }
         return car;
+    }
+    @PostMapping("/addCar")
+    public ResponseEntity<String> addCar(@Valid @RequestBody GetXmlCar getXmlCar){
+        UUID id = UUID.randomUUID();
+        Car car =new Car(getXmlCar.getNumberPts(),getXmlCar.getMake(),getXmlCar.getModel(),getXmlCar.getYear(),getXmlCar.getColor(),getXmlCar.getRentalPricePerDay(),getXmlCar.getMileage());
+        car.setId(id);
+        carRepository.save(car);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Новый автомобиль добавлен");
     }
 
 }
