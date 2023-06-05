@@ -8,11 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.rentCar.application.dto.GetXmlCar;
 import ru.rentCar.application.entity.Car;
+import ru.rentCar.application.entity.Spend;
 import ru.rentCar.application.repository.CarRepository;
+import ru.rentCar.application.repository.IncomeRepository;
+import ru.rentCar.application.repository.SpendRepository;
 import ru.rentCar.application.service.CarService;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -25,8 +29,11 @@ public class CarControllers {
     private final CarService carService;
     @Autowired
     private final CarRepository carRepository;
-    @GetMapping("/")
-
+    @Autowired
+    private final SpendRepository spendRepository;
+    @Autowired
+    private final IncomeRepository incomeRepository;
+    @GetMapping("/cars/all")
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
@@ -70,5 +77,11 @@ public class CarControllers {
         carRepository.save(car);
         return ResponseEntity.status(HttpStatus.CREATED).body("Новый автомобиль добавлен");
     }
+     @GetMapping("/spend/all")
+    public List<Spend> getAll (@PathVariable int spend){
+        List<Spend> allListSpend = new ArrayList<>();
+        allListSpend.addAll( spendRepository.getAllBySpend());
+        return allListSpend;
+     }
 
 }
