@@ -26,11 +26,13 @@ public class CarControllers {
     @Autowired
     private final CarRepository carRepository;
     @GetMapping("/")
+
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
 
     @RequestMapping("/dateAfter")
+
     public int getDate(@PathVariable("date") Date date) {
         return carService.getCarSpendAfterDate(date);
     }

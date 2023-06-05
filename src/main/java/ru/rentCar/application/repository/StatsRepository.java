@@ -34,7 +34,7 @@ public class StatsRepository {
 
         @Override
         public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return rs.getInt("Spend");
+            return rs.getInt("DATE");
         }
     }
 }

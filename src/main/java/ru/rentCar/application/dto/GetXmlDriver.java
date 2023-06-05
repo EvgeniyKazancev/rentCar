@@ -3,6 +3,7 @@ package ru.rentCar.application.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 
 import javax.validation.constraints.Email;
@@ -23,6 +24,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 public class GetXmlDriver {
+    @org.springframework.data.annotation.Id
     @XmlElement
     private UUID Id;
 

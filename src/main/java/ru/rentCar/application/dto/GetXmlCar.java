@@ -3,6 +3,7 @@ package ru.rentCar.application.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -21,6 +22,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 public class GetXmlCar {
+    @Id
     @XmlElement(name = "ID")
     private UUID id;
 
