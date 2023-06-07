@@ -7,7 +7,5 @@ import ru.rentCar.application.entity.Car;
 import java.util.UUID;
 @Repository
 public interface CarRepository extends JpaRepository<Car, UUID> {
- Car getCarById (UUID Id);
 
-    void delete(UUID id);
 }

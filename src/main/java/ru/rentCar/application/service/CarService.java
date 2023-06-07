@@ -22,7 +22,7 @@ public class CarService {
 
           return statsRepository.getSpendFromIsDate(date);
     }
-    public List<Spend> getAllSpend(UUID id, int spend){
-        return spendRepository.getAllBySpend();
+    public List<Spend> getAllSpend (UUID id){
+        return spendRepository.getAllBySpend(id);
     }
 }

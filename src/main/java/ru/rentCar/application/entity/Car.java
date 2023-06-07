@@ -21,7 +21,8 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "DRIVER_ID")
     private Driver driver;
 
     @Column(name = "NUMBER_PTS")
@@ -48,13 +49,8 @@ public class Car {
     @Column(name = "RENTED")
     private boolean rented;
 
-    public Car(@NotBlank(message = "Number of PTS is mandatory") BigDecimal numberPts,
-               @NotBlank(message = "Make is mandatory") String make,
-               @NotBlank(message = "Model is mandatory") String model,
-               @Min(value = 2010, message = "Year should not be less than 2010") @Max(value = 2050, message = "Year should be not greater than 2050") int year,
-               @NotBlank(message = "Color is mandatory") String color,
-               @NotNull(message = "Rental price in day is mandatory") double rentalPricePerDay,
-               @NotBlank(message = "Mileage is mandatory") Long mileage) {
+
+    public Car() {
 
     }
 }

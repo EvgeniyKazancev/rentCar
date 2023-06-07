@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 
 public interface DriverRepository extends JpaRepository <Driver, Long>{
-    List<Driver> getDriverById (Long Id);
+
 }

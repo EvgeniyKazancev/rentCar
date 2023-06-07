@@ -3,10 +3,9 @@ package ru.rentCar.application.controlers;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.rentCar.application.dto.GetXmlCar;
+import ru.rentCar.application.dto.CarDto;
 import ru.rentCar.application.entity.Car;
 import ru.rentCar.application.entity.Spend;
 import ru.rentCar.application.repository.CarRepository;
@@ -15,7 +14,6 @@ import ru.rentCar.application.repository.SpendRepository;
 import ru.rentCar.application.service.CarService;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +31,7 @@ public class CarControllers {
     private final SpendRepository spendRepository;
     @Autowired
     private final IncomeRepository incomeRepository;
-    @GetMapping("/cars/all")
+    @GetMapping("/all")
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
@@ -69,18 +67,19 @@ public class CarControllers {
         }
         return car;
     }
-    @PostMapping("/addCar")
-    public ResponseEntity<String> addCar(@Valid @RequestBody GetXmlCar getXmlCar){
+    @PutMapping("/addCar")
+    public ResponseEntity<String> addCar(@Valid @RequestBody CarDto getXmlCar){
         UUID id = UUID.randomUUID();
-        Car car =new Car(getXmlCar.getNumberPts(),getXmlCar.getMake(),getXmlCar.getModel(),getXmlCar.getYear(),getXmlCar.getColor(),getXmlCar.getRentalPricePerDay(),getXmlCar.getMileage());
+        Car car
+        Car car = new Car(getXmlCar.getNumberPts(),getXmlCar.getMake(),getXmlCar.getModel(),getXmlCar.getYear(),getXmlCar.getColor(),getXmlCar.getRentalPricePerDay(),getXmlCar.getMileage());
         car.setId(id);
         carRepository.save(car);
         return ResponseEntity.status(HttpStatus.CREATED).body("Новый автомобиль добавлен");
     }
      @GetMapping("/spend/all")
-    public List<Spend> getAll (@PathVariable int spend){
+    public List<Spend> getAll (@PathVariable UUID id){
         List<Spend> allListSpend = new ArrayList<>();
-        allListSpend.addAll( spendRepository.getAllBySpend());
+        allListSpend.addAll( spendRepository.getAllBySpend(id));
         return allListSpend;
      }
 

@@ -14,7 +14,8 @@ public class Driver  {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID Id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CAR_ID")
     private Car car;
 
     @Column(name = "FIRST_NAME")
